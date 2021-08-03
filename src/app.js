@@ -1,9 +1,9 @@
 const path = require('path')
-const express = require('express')
+const express = require('express') //load the express libraray. it imports a single function, express is actually a function as opposed to an object and is called when to create an application.
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
-const app = express()
+const app = express() //to store express application, doesn't take any argument but uses functions for the same
 const port = process.env.PORT || 3000
 
 //define paths for Express config
@@ -29,7 +29,7 @@ app.get('',(req, res) => {
     })
 })
 app.get('/about', (req, res) => {
-    res.render('about', {
+    res.render('about', {         //sending json 
         title: 'About me',
         name: 'Shreya'
     }) 
@@ -43,9 +43,9 @@ app.get('/help', (req, res) => {
     })
 })
 
-app.get('/weather', (req, res) => {
+app.get('/weather', (req, res) => {        
     if(!req.query.address) {
-        return res.send({
+        return res.send({                  
             error: 'You must provide an address'
         })
     }
